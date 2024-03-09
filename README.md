@@ -7,4 +7,6 @@ https://github.com/marketplace/actions/create-release
 https://github.com/marketplace/actions/release-drafter
 
 # Hi?
-test.
+https://johanneskonings.dev/github/2021/02/28/github_automatic_releases_and-changelog/
+
+234
