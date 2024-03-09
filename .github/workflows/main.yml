@@ -1,0 +1,22 @@
+name: Build Demo 1
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneWindows64
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build
