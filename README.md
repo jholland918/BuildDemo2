@@ -11,3 +11,4 @@ https://johanneskonings.dev/github/2021/02/28/github_automatic_releases_and-chan
 
 ## Hello...
 change 1.1
+change 1.2
