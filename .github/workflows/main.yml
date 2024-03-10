@@ -7,7 +7,6 @@ permissions:
 
 jobs:
   build:
-
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: windows-2022
     strategy:
@@ -41,6 +40,8 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
