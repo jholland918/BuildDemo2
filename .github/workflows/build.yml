@@ -3,16 +3,14 @@ name: Build Demo 1
 # There doesn't seem to be an easy way to trigger a build when a pull request is merged. 
 # So we're just building any time a push is made to master. https://github.com/orgs/community/discussions/26724
 on:
-  pull_request:
-    types: 
-      - closed
+  push:
     branches:
       - main
 
 jobs:
   build:
     name: Build
-    if: ${{ github.event.pull_request.merged == true }}
+    if: startsWith(github.ref, 'refs/tags/') != true
 #    runs-on: windows-2022
     runs-on: ubuntu-latest
     steps:
