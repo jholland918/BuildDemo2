@@ -16,12 +16,6 @@ jobs:
       - name: Build # just for example files...
         run: echo ${{ github.sha }} > Release.txt
 
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
