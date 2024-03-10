@@ -15,6 +15,7 @@ change 1.2
 
 ## Change 3
 change 3.1
+change 3.2
 
 ## Change 2
 Change 2.1
