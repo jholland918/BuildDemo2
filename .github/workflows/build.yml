@@ -18,7 +18,7 @@ jobs:
         with:
           lfs: true
       - name: Build
-        run: echo ${{ github.sha }} > Release.txt
+        run: echo ${{ github.sha }} > build/Release.txt
       - uses: actions/upload-artifact@v4
         with:
           name: Build
