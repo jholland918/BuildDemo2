@@ -9,27 +9,3 @@ https://github.com/marketplace/actions/release-drafter
 # Hi?
 https://johanneskonings.dev/github/2021/02/28/github_automatic_releases_and-changelog/
 
-## Hello...
-change 1.1
-change 1.2
-
-## HWhat?!
-change 16??
-
-## Change 7
-chnage 7.1
-
-## Change 6
-chnage 6.1
-
-## Change 5
-change 5.1
-
-## Change 3
-change 3.1
-change 3.2
-
-## Change 2
-Change 2.1
-Change 2.2
-
