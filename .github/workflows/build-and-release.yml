@@ -28,56 +28,26 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: artifact
           path: artifact
+
       - name: Display structure of downloaded artifact
         run: ls -R
-      - name: Build Changelog
+
+      - name: "Build Changelog"
         id: github_release
-        uses: mikepenz/release-changelog-builder-action@v3 # v4 just puts everything in "Uncategorized" - seems like a bug.
+        uses: mikepenz/release-changelog-builder-action@v4
         with:
-          commitMode: true
-          configurationJson: |
-            {
-              "categories": [
-                {
-                    "title": "## 🚀 Features",
-                    "labels": [
-                        "feature"
-                    ]
-                },
-                {
-                    "title": "## 🐛 Fixes",
-                    "labels": [
-                        "fix"
-                    ]
-                },
-                {
-                    "title": "## 🛠 Under the hood",
-                    "labels": []
-                }
-              ],
-              "template": "#{{CHANGELOG}}",
-              "pr_template": "- [#{{TITLE}}](https://github.com/jholland918/BuildDemo2/commit/#{{MERGE_SHA}})",
-              "empty_template": "- no changes",
-              "label_extractor": [
-                  {
-                      "pattern": "(.): (.+)",
-                      "target": "$1",
-                      "on_property": "title"
-                  },
-                  {
-                      "pattern": "(.) (.+)",
-                      "target": "$1",
-                      "on_property": "title"
-                  }
-              ],
-            }
+          configuration: "configs/configuration_repo.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
