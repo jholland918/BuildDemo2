@@ -30,7 +30,7 @@ jobs:
       # Download all artifacts to the current working directory
       - uses: actions/download-artifact@v4
         with:
-          name: Download Artifact
+          name: artifact
       - name: Display structure of downloaded artifact
         run: ls -R
       # Create a new release with the downloaded artifacts
