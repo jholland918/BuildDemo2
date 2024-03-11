@@ -35,7 +35,13 @@ jobs:
           path: artifact
       - name: Display structure of downloaded artifact
         run: ls -R
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          body: ${{ steps.github_release.outputs.changelog }}
           files: artifact/Release.txt
