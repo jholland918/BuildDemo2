@@ -37,7 +37,7 @@ jobs:
         run: ls -R
       - name: Build Changelog
         id: github_release
-        uses: mikepenz/release-changelog-builder-action@v4
+        uses: mikepenz/release-changelog-builder-action@v3 # v4 just puts everything in "Uncategorized" - seems like a bug.
         with:
           commitMode: true
           configurationJson: |
