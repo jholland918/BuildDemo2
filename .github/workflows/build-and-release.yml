@@ -40,17 +40,17 @@ jobs:
       - name: Display structure of downloaded artifact
         run: ls -R
 
-      - name: "Build Changelog"
-        id: github_release
+      - name: Build Changelog
+        id: changelog
         uses: mikepenz/release-changelog-builder-action@v4
         with:
+          configuration: ".github/changelog-configuration.json"
           commitMode: true
-          configuration: "configs/configuration_repo.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          body: ${{ steps.github_release.outputs.changelog }}
+          body: ${{ steps.changelog.outputs.changelog }}
           files: artifact/Release.txt
