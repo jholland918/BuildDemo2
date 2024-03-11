@@ -5,7 +5,7 @@ on:
     branches:
       - main
     tags:
-      - '*'
+      - "*"
 
 permissions:
   contents: write # needed to create releases
@@ -38,6 +38,33 @@ jobs:
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          commitMode: true
+          # This defines a regex to extract the label from the commit message. Handling flags from the [Conventional Commit Standards](https://www.conventionalcommits.org/en/v1.0.0/)
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}",
+              "categories": [
+                {
+                    "title": "## Feature",
+                    "labels": ["feat", "feature"]
+                },
+                {
+                    "title": "## Fix",
+                    "labels": ["fix", "bug"]
+                },
+                {
+                    "title": "## Other",
+                    "labels": []
+                }
+              ],
+              "label_extractor": [
+                {
+                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
+                  "target": "$1"
+                }
+              ],
+            }
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
