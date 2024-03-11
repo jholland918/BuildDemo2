@@ -40,30 +40,40 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v4
         with:
           commitMode: true
-          # This defines a regex to extract the label from the commit message. Handling flags from the [Conventional Commit Standards](https://www.conventionalcommits.org/en/v1.0.0/)
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}}",
               "categories": [
                 {
-                    "title": "## Feature",
-                    "labels": ["feat", "feature"]
+                    "title": "## 🚀 Features",
+                    "labels": [
+                        "feature"
+                    ]
                 },
                 {
-                    "title": "## Fix",
-                    "labels": ["fix", "bug"]
+                    "title": "## 🐛 Fixes",
+                    "labels": [
+                        "fix"
+                    ]
                 },
                 {
-                    "title": "## Other",
+                    "title": "## 🛠 Under the hood",
                     "labels": []
                 }
               ],
+              "template": "#{{CHANGELOG}}",
+              "pr_template": "- [${{TITLE}}](https://github.com/jholland918/BuildDemo2/commit/${{MERGE_SHA}})",
+              "empty_template": "- no changes",
               "label_extractor": [
-                {
-                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
-                  "target": "$1",
-                  "on_property": "title"
-                }
+                  {
+                      "pattern": "(.): (.+)",
+                      "target": "$1",
+                      "on_property": "title"
+                  },
+                  {
+                      "pattern": "(.) (.+)",
+                      "target": "$1",
+                      "on_property": "title"
+                  }
               ],
             }
         env:
