@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build Game
-        run: mkdir build ; echo ${{ github.sha }} > build/Release.txt
+        run: mkdir artifact ; echo ${{ github.sha }} > artifact/Release.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: Artifact
-          path: build
+          name: artifact
+          path: artifact
   release:
     name: Release
     needs: build
@@ -29,10 +29,12 @@ jobs:
     steps:
       # Download all artifacts to the current working directory
       - uses: actions/download-artifact@v4
-      - name: Display structure of downloaded files
+        with:
+          name: Download Artifact
+      - name: Display structure of downloaded artifact
         run: ls -R
       # Create a new release with the downloaded artifacts
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/Release.txt
+          files: artifact/Release.txt
