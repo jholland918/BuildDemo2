@@ -16,6 +16,3 @@ I like readme.
 ummm.
 
 feature?!
-
-whatttt
- dude?
