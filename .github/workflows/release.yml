@@ -1,11 +1,14 @@
-name: Build and Release
+name: Release
 
 on:
-  create:
+  push:
     branches:
       - main
     tags:
-      - "*"
+      - "v*"
+    paths-ignore:
+    - 'Docs/**'
+    # - 'README.md'
 
 permissions:
   contents: write # needed to create releases
