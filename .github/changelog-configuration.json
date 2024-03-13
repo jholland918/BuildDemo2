@@ -25,11 +25,11 @@
             "labels": [ "kind/test", "test" ]
         },
         {
-            "title": "## 📦 Build & Dependencies",
+            "title": "### 📦 Build & Dependencies",
             "labels": [ "kind/build", "build", "dependency", "package" ]
         },
         {
-            "title": "## 🚨 Security ",
+            "title": "### 🚨 Security ",
             "labels": [ "kind/security", "security" ]
         },
         {
@@ -41,15 +41,15 @@
             "labels": [ "kind/misc", "misc" ]
         },
         {
-            "title": "## ⛔ Deprecated",
+            "title": "### ⛔ Deprecated",
             "labels": [ "kind/deprecate", "deprecate" ]
         },
         {
-            "title": "## ⛔ Removed",
+            "title": "### ⛔ Removed",
             "labels": [ "kind/remove", "remove" ]
         },
         {
-            "title": "## 🛠️ Under the hood",
+            "title": "### 🛠️ Under the hood",
             "labels": []
         }
     ],
